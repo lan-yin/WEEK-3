@@ -16,6 +16,9 @@ fetch(
             p.innerText = data["result"]["results"][n]["stitle"];
             return p;
         }
+        // 這週作業基本上全部都可以 createElement + appendChild
+        // function 
+
 
         // The Promotion Part
         document.querySelector(".promotion1").appendChild(getImg(0));
