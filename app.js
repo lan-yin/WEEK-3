@@ -12,10 +12,9 @@ fetch(
             return img;
         }
         function getTitle(n) {
-            let pTag = document.createElement("p");
-            t = document.createTextNode(data["result"]["results"][n]["stitle"]);
-            // pTag.createTextNode = data["result"]["results"][n]["stitle"];
-            return pTag.appendChild(t);
+            let p = document.createElement("p");
+            p.innerText = data["result"]["results"][n]["stitle"];
+            return p;
         }
 
         // The Promotion Part
