@@ -1,55 +1,30 @@
 // 使用者打開網頁時，立刻透過 JavaScript fetch 連線以上網址，取得景點資料。
 fetch(
-    "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json"
-  )
-    .then((res) => res.json())
-    .then((data) => {
-        function getImg(n) {
-            pic_url =
-              "https://" + data["result"]["results"][n]["file"].split("https://")[1];
-            let img = document.createElement("img");
-            img.setAttribute("src", pic_url);
-            return img;
-        }
-        function getTitle(n) {
-            let p = document.createElement("p");
-            p.innerText = data["result"]["results"][n]["stitle"];
-            return p;
-        }
-        // 這週作業基本上全部都可以 createElement + appendChild
-        // function 
+  "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json"
+)
+  .then((res) => res.json())
+  .then((data) => {
+    function picture_box(box_class, parentClass, dataIndex) {
+      pic_url =
+        "https://" +
+        data["result"]["results"][dataIndex]["file"].split("https://")[1];
+      p_text = data["result"]["results"][dataIndex]["stitle"];
+      let up = document.querySelector(parentClass);
+      let div = document.createElement("div");
+      div.className = box_class;
+      let img = document.createElement("img");
+      img.setAttribute("src", pic_url);
+      let p = document.createElement("p");
+      p.innerText = p_text;
+      div.appendChild(img);
+      div.appendChild(p);
+      up.appendChild(div);
+    }
+    picture_box("promotion", "section.up", 0);
+    picture_box("promotion", "section.up", 1);
 
-
-        // The Promotion Part
-        document.querySelector(".promotion1").appendChild(getImg(0));
-        document.querySelector(".promotion1").appendChild(getTitle(0));
-        document.querySelector(".promotion2").appendChild(getImg(1));
-        document.querySelector(".promotion2").appendChild(getTitle(1));
-
-       
-        // document.querySelector(".bottom")
-        document.querySelector(".one").appendChild(getImg(2));
-        document.querySelector(".one").appendChild(getTitle(2));
-        document.querySelector(".two").appendChild(getImg(3));
-        document.querySelector(".two").appendChild(getTitle(3));
-        document.querySelector(".three").appendChild(getImg(4));
-        document.querySelector(".three").appendChild(getTitle(4));
-        document.querySelector(".four").appendChild(getImg(5));
-        document.querySelector(".four").appendChild(getTitle(5));
-        document.querySelector(".five").appendChild(getImg(6));
-        document.querySelector(".five").appendChild(getTitle(6));
-        document.querySelector(".six").appendChild(getImg(7));
-        document.querySelector(".six").appendChild(getTitle(7));
-        document.querySelector(".seven").appendChild(getImg(8));
-        document.querySelector(".seven").appendChild(getTitle(8));
-        document.querySelector(".eight").appendChild(getImg(9));
-        document.querySelector(".eight").appendChild(getTitle(9));
-
-    })
-    .catch((error) => console.log(error));
-
-
-
-
-
-
+    for (let i = 2; i < 10; i++) {
+      picture_box("pictures", "section.bottom", i);
+    }
+  })
+  .catch((error) => console.log(error));
