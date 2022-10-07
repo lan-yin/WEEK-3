@@ -9,7 +9,7 @@ fetch(
         "https://" +
         data["result"]["results"][dataIndex]["file"].split("https://")[1];
       p_text = data["result"]["results"][dataIndex]["stitle"];
-      let up = document.querySelector(parentClass);
+      let parent = document.querySelector(parentClass);
       let div = document.createElement("div");
       div.className = box_class;
       let img = document.createElement("img");
@@ -18,7 +18,7 @@ fetch(
       p.innerText = p_text;
       div.appendChild(img);
       div.appendChild(p);
-      up.appendChild(div);
+      parent.appendChild(div);
     }
     picture_box("promotion", "section.up", 0);
     picture_box("promotion", "section.up", 1);
