@@ -120,6 +120,21 @@ main div.frame section.bottom div.pictures p {
   line-height: 35px;
   background-color: #d9eef9;
 }
+main div.frame section.bottom div.undisplay {
+  display: none;
+}
+
+div.but {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0px;
+}
+div.but button {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 1200px) {
   main div.frame {
